@@ -30,6 +30,8 @@ if ingredients:
 
     for fruit in ingredients:
         ingredients_str += fruit + ' '
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        fruityvice_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
     # st.write(ingredients_str)
 
@@ -43,8 +45,3 @@ if ingredients:
         session.sql(my_insert_stmt).collect()
         st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
 
-# New section to display fruityvice nutrition information
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-# st.text(fruityvice_response.json())
-
-fruityvice_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
