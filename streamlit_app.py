@@ -30,7 +30,8 @@ if ingredients:
 
     for fruit in ingredients:
         ingredients_str += fruit + ' '
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        st.subheader(fruit + ' Nutrition Information')
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit)
         fruityvice_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
     # st.write(ingredients_str)
